@@ -59,12 +59,14 @@ class LoadingAnimationWidget {
   static Widget prograssiveDots({
     required Color color,
     required double size,
+    required TextDirection direction,
     Key? key,
   }) {
     return PrograssiveDots(
       color: color,
       size: size,
       key: key,
+      direction: direction,
     );
   }
 

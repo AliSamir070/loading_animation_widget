@@ -213,6 +213,7 @@ final listOfAnimations = <AppBody>[
     LoadingAnimationWidget.prograssiveDots(
       color: Colors.white,
       size: _kSize,
+      direction: TextDirection.ltr
     ),
   ),
   AppBody(

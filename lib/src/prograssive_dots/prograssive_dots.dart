@@ -4,11 +4,12 @@ import '../widgets/draw_dot.dart';
 class PrograssiveDots extends StatefulWidget {
   final double size;
   final Color color;
-
+  final TextDirection direction;
   const PrograssiveDots({
     Key? key,
     required this.color,
     required this.size,
+    required this.direction
   }) : super(key: key);
 
   @override
@@ -40,11 +41,11 @@ class _PrograssiveDotsState extends State<PrograssiveDots>
     final double previousDotPosition = -(gapBetweenDots + dotSize);
 
     Widget translatingDot() => Transform.translate(
-          offset: Tween<Offset>(
+          offset:
+              Tween<Offset>(
             begin: Offset.zero,
-            end: Offset(previousDotPosition, 0),
-          )
-              .animate(
+            end: widget.direction == TextDirection.rtl?Offset(-previousDotPosition, 0):Offset(previousDotPosition, 0),
+          ).animate(
                 CurvedAnimation(
                   parent: _animationController,
                   curve: const Interval(
@@ -86,6 +87,7 @@ class _PrograssiveDotsState extends State<PrograssiveDots>
         builder: (_, __) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            textDirection: widget.direction,
             children: <Widget>[
               scalingDot(
                 true,
